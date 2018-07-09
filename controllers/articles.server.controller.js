@@ -35,7 +35,7 @@ module.exports.all = function(req, res) {
 
 module.exports.create = function(req, res) {
   var article = new Article(req.body);
- article.postedBy = req.user;
+  article.postedBy = req.user;
   article.save(function(err, data) {
     if (err) {
       return res.status(400).send({
@@ -86,6 +86,12 @@ exports.articleByID = function(req, res, next, id) {
 		req.article = article;
 		next();
 	});
+};
+module.exports.single = function(req, res) {
+   res.render('./../public/views/article/view.ejs', {
+          user: req.user || null,
+          article: req.article
+    });
 };
 module.exports.new = function(req, res){
   res.render('./../public/views/article/new.ejs', {

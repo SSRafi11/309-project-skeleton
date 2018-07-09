@@ -1,6 +1,6 @@
 <% include ../partials/header.ejs %>
 <div class="container">
-      <h1>New Article</h1>
+    	           <h1>New Article</h1>
 <p>Title:</p>
 <input type="text" id="title" value="<%=article.title%>"/><br/><br/>
 <p>Author:</p>
@@ -11,19 +11,19 @@
 <textarea id="summary"><%=article.summary%></textarea><br/><br/>
 <button id="submit">Submit</button>
 <div id="error"></div>
-       
+      
     	                            
 </div>
 <script src="/lib/jquery/dist/jquery.min.js"></script>
 <script>
-var articleID = <%- JSON.stringify(article._id) %>;
+     var articleID = <%- JSON.stringify(article._id) %>;
   	var updatedArticle = {};
   	$('#submit').click(function(){
 updatedArticle.title = $('#title').val();
 updatedArticle.author = $('#author').val();
 updatedArticle.link = $('#link').val();
 updatedArticle.summary = $('#summary').val();
-$.ajax({
+          $.ajax({
 method: "PUT",
 url: "/api/articles/edit/"+articleID,
 data: updatedArticle
@@ -34,6 +34,6 @@ window.location.replace("/article/"+articleID);;
 $("#error").text(JSON.parse(response.responseText).message);
 });
 });
-
+                                                                  
 </script>
 <% include ../partials/footer.ejs %>

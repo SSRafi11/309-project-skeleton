@@ -1,6 +1,6 @@
 <% include ../partials/header.ejs %>
 <div class="container">
-    	  <h1>New Article</h1>
+    	           <h1>New Article</h1>
   	<p>Title:</p>
   	<input type="text" id="title"/><br/><br/>
   	<p>Author:</p>
@@ -11,6 +11,7 @@
   	<textarea id="summary">Add summary </textarea><br/><br/>
   	<button id="submit">Submit</button>
   	<div id="error"></div>
+       
     	                            
 </div>
 <script src="/lib/jquery/dist/jquery.min.js"></script>
@@ -20,8 +21,9 @@ var newArticle = {title:"", author:"", link:"", summary:""};
     	newArticle.title = $('#title').val();
     	newArticle.author = $('#author').val();
     	newArticle.link = $('#link').val();
-    	newArticle.summary = $('#summary').val(); 
-    	$.ajax({
+    	newArticle.summary = $('#summary').val();
+          
+          $.ajax({
     	method: "POST",
     	url: "/api/articles",
 data: newArticle
@@ -32,6 +34,6 @@ console.log(response);
 $("#error").text(JSON.parse(response.responseText).message);
 });
 });
-
+                                                                                                    
 </script>
 <% include ../partials/footer.ejs %>
